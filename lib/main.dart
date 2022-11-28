@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
-//import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_hooks/flutter_hooks.dart' show HookWidget;
+import 'package:smartdisplay/utilities/hooks.dart';
 import './redux/reducers/sample.dart';
 import './redux/sample_store.dart';
 import './redux/actions/increment.dart';
@@ -27,12 +26,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends HookWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   Widget build(BuildContext context) {
+    final dispatch = useDispatch<SampleState>();
+    final counter = useSelector<SampleState, int>((state) => state.counter);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -41,30 +43,20 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            StoreBuilder<SampleState>(
-              builder: (BuildContext context, Store<SampleState> store) {
-                int counter = store.state.counter;
-                return Text(
-                  'The button has been pushed this many times: $counter',
-                  style: Theme.of(context).textTheme.headline4,
-                );
-              },
-            )
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
           ],
         ),
       ),
-      floatingActionButton: StoreConnector<SampleState, VoidCallback>(
-        converter: (store) {
-          return () => store.dispatch(IncrementAction());
-        },
-        builder: (context, callback) {
-          return FloatingActionButton(
-            // Attach the `callback` to the `onPressed` attribute
-            onPressed: callback,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          );
-        },
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => dispatch(IncrementAction()),
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
