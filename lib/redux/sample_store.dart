@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:flutter_hooks/flutter_hooks.dart' show useRef, HookWidget;
 import 'reducers/sample.dart';
 import 'middlewares/persister.dart';
 
@@ -16,14 +17,16 @@ Future<SampleState> _loadState() async {
   return initialState ?? SampleState(counter: 0);
 }
 
-class SampleStoreProvider extends StatelessWidget {
+class SampleStoreProvider extends HookWidget {
   final Widget child;
 
   SampleStoreProvider({required this.child});
 
   Widget build(BuildContext context) {
+    final initialState = useRef<Future<SampleState>>(_loadState());
+
     return FutureBuilder<SampleState>(
-      future: _loadState(),
+      future: initialState.value,
       builder: (BuildContext context, AsyncSnapshot<SampleState> snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
           return CircularProgressIndicator();
