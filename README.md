@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/98d1e47b-bfac-48b5-8682-dc149be16436/deploy-status)](https://app.netlify.com/sites/smartdisplay/deploys)
+
 # smartdisplay
 
 A new Flutter project.
