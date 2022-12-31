@@ -21,6 +21,7 @@ version: 1.0.0+1
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
+  flutter: ">=1.12.13+hotfix.5"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -41,8 +42,8 @@ dependencies:
   shared_preferences: 2.0.15
   flutter_hooks: 0.18.5+1
   qr_flutter: ^4.0.0
-  cloud_firestore: 4.3.0
-  firebase_auth: 4.2.3
+  cloud_firestore: 4.3.1
+  firebase_auth: 4.2.4
 
 dev_dependencies:
   flutter_test:
