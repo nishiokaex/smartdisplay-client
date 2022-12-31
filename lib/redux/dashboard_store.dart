@@ -20,6 +20,7 @@ class DashbaordStoreProvider extends HookWidget {
 
   DashbaordStoreProvider({required this.child, required this.dashboardId});
 
+  @override
   Widget build(BuildContext context) {
     final initialState = useRef<Future<DashboardState>>(loadState(dashboardId));
 

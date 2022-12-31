@@ -30,8 +30,9 @@ Future<ViewerState> loadState() async {
 class ViewerStoreProvider extends HookWidget {
   final Widget child;
 
-  ViewerStoreProvider({required this.child});
+  ViewerStoreProvider({super.key, required this.child});
 
+  @override
   Widget build(BuildContext context) {
     final initialState = useRef<Future<ViewerState>>(loadState());
 
@@ -39,16 +40,18 @@ class ViewerStoreProvider extends HookWidget {
       future: initialState.value,
       builder: (BuildContext context, AsyncSnapshot<ViewerState> snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return CircularProgressIndicator();
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         }
 
         if (snapshot.hasError) {
-          return MaterialApp(
-            home: Scaffold(
-              body: Center(
-                child: Text(
-                  "Error: ${snapshot.error}",
-                ),
+          return Scaffold(
+            body: Center(
+              child: Text(
+                "Error: ${snapshot.error}",
               ),
             ),
           );

@@ -38,13 +38,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewerStoreProvider(
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: ViewerRoot(),
+    const String appTitle = kIsWeb ? "Smart Display for Web" : "Smart Display";
+
+    return MaterialApp(
+      title: appTitle,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ViewerStoreProvider(
+        child: ViewerRoot(),
       ),
     );
   }

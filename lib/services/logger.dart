@@ -21,8 +21,6 @@ abstract class Logger {
 }
 
 class _WebLogger extends Logger {
-  static const bool isProd = bool.fromEnvironment('dart.vm.product');
-
   @override
   errorImpl(Object exception, [StackTrace? stackTrace]) {
     // productionでもログを出す

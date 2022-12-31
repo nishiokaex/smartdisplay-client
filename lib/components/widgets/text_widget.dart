@@ -26,6 +26,7 @@ class TextContent extends StatelessWidget {
   final String content;
 
   TextContent({
+    super.key,
     required this.content,
   });
 

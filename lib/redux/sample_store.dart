@@ -20,7 +20,7 @@ Future<SampleState> _loadState() async {
 class SampleStoreProvider extends HookWidget {
   final Widget child;
 
-  SampleStoreProvider({required this.child});
+  SampleStoreProvider({super.key, required this.child});
 
   Widget build(BuildContext context) {
     final initialState = useRef<Future<SampleState>>(_loadState());

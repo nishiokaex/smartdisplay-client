@@ -61,7 +61,7 @@ class AppCard extends StatelessWidget {
                   ),
 
                   // divider
-                  Divider(
+                  const Divider(
                     height: 8,
                     thickness: 2,
                   ),
