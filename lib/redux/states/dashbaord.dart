@@ -1,5 +1,5 @@
-import 'text_widget.dart';
-import 'container_widget.dart';
+import '../../components/widgets/container_widget.dart';
+import '../../components/widgets/text_widget.dart';
 
 enum WidgetClass {
   text("9c4e0e4b-48f6-4bb4-9677-3d7d737b2813"),

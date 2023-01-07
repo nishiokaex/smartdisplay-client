@@ -1,8 +1,45 @@
 import 'package:flutter/material.dart';
-import '../../redux/states/text_widget.dart';
+import '../../redux/states/dashbaord.dart';
 import '../../utilities/ui_helper.dart';
 import 'app_card.dart';
 import 'base_widget.dart';
+
+class TextWidgetState extends WidgetState {
+  final String content;
+
+  TextWidgetState({
+    required String id,
+    required this.content,
+  }) : super(id: id, klass: WidgetClass.text);
+
+  @override
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'classId': klass.id,
+      'content': content,
+    };
+  }
+
+  @override
+  String toTypeName() {
+    return "テキストウィジェット";
+  }
+
+  TextWidgetState copyWith({String? content}) {
+    return TextWidgetState(
+      id: id,
+      content: content ?? this.content,
+    );
+  }
+
+  static TextWidgetState fromMap(Map<String, dynamic> map) {
+    return TextWidgetState(
+      id: map['id'],
+      content: map['content'],
+    );
+  }
+}
 
 class TextWidget extends DashboardWidget<TextWidgetState> {
   const TextWidget({super.key, required List<String> paths})
