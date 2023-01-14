@@ -1,4 +1,4 @@
 import 'package:redux/redux.dart';
-import '../states/dashbaord.dart';
+import '../../components/dashboard.dart';
 
 final dashboardReducer = combineReducers<DashboardState>([]);

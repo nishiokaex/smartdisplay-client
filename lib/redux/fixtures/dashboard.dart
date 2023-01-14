@@ -1,6 +1,6 @@
-import '../states/dashbaord.dart';
-
 // サンプルデータ
+import '../../components/dashboard.dart';
+
 Future<DashboardState> loadState(String dashboardId) async {
   const Map<String, dynamic> map = {
     "id": "b7cdb6bf-4bf9-462d-bd87-91f1909c17e5",
